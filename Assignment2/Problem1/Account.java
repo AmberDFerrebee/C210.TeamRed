@@ -29,9 +29,19 @@ public class Account {
 	// required data field, default is 0
 	private double balance; 
 	// required data field, default is 0
-	private double annualInterestRate; 
-	// interest rate that is assumed to be the same for all accounts
-	final private double interestRate = .045;
+	private static double annualInterestRate; 
+	
+	// required no-args constructor 
+	public Account() { 
+		annualInterestRate = .045;
+	}
+	
+	// required constructor that accepts specified data field values
+	public Account(int id, double startingBal) { 
+		this.id = id;
+		this.balance = startingBal;
+		
+	}
 	
 	// required method to perform withdrawals
 	public void withdraw(double amount) { 
@@ -43,7 +53,7 @@ public class Account {
 	}
 	// required method to return interest rate
 	public double getMonthlyInterestRate() { 
-		double monthlyIntRate = this.annualInterestRate/12;
+		double monthlyIntRate = annualInterestRate/12;
 		return monthlyIntRate;
 	}
 	// required method to return interest 
@@ -75,20 +85,12 @@ public class Account {
 	}
 	// required getter method to return private data field
 	public double getIntRate() { 
-		return this.annualInterestRate;
+		return annualInterestRate;
 	}
 	// required setter method to set private data field
 	public void setIntRate() { 
-		this.annualInterestRate = interestRate;
+		annualInterestRate = interestRate;
 	}
-	// required constructor that accepts specified data field values
-	public Account(int id, double startingBal) { 
-		this.id = id;
-		this.balance = startingBal;
-		setIntRate();
-	}
-	// required no-args constructor 
-	public Account() { 
-		setIntRate();
-	}
+
+	
 }
